@@ -7,7 +7,6 @@ export class Home extends Component {
     return (
       <div>
             <h1>Hello from the Task Manager!</h1>
-            <img src="./public/logo.png"></img>
       </div>
     );
   }

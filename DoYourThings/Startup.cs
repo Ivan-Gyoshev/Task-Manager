@@ -3,6 +3,7 @@
     using DoYourThings.Data;
     using DoYourThings.Data.Models;
     using DoYourThings.Data.Seeding;
+    using DoYourThings.Services.Assignments;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -48,6 +49,8 @@
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddTransient<IAssignmentsService, AssignmentsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
