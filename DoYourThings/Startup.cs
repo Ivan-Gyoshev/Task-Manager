@@ -4,6 +4,7 @@
     using DoYourThings.Data.Models;
     using DoYourThings.Data.Seeding;
     using DoYourThings.Services.Assignments;
+    using DoYourThings.Services.Categories;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -26,8 +27,10 @@
                 .AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("DefaultConnection")));
+
             services
                 .AddDatabaseDeveloperPageExceptionFilter();
+
             services
                 .AddDefaultIdentity<ApplicationUser>(options =>
                 {
@@ -37,20 +40,25 @@
                     options.Password.RequireUppercase = false;
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services
                 .AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+
             services
                 .AddAuthentication()
                 .AddIdentityServerJwt();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
             });
 
             services.AddTransient<IAssignmentsService, AssignmentsService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -76,7 +84,9 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
             app.UseRouting();
+
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseAuthorization();

@@ -1,13 +1,11 @@
 ﻿namespace DoYourThings.Controllers
 {
-    using System.Linq;
     using System.Threading.Tasks;
 
     using DoYourThings.Data;
-    using DoYourThings.Data.Models;
     using DoYourThings.DTOs.Assignments;
     using DoYourThings.Services.Assignments;
-    using Microsoft.AspNetCore.Identity;
+    using DoYourThings.Services.Categories;
     using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
@@ -15,20 +13,26 @@
     public class AssignmentsController : ControllerBase
     {
         private readonly IAssignmentsService assignmentsService;
-        private readonly ApplicationDbContext dbContext;
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly ICategoriesService categoriesService;
 
-        public AssignmentsController(IAssignmentsService assignmentsService, ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager)
+        public AssignmentsController(IAssignmentsService assignmentsService, ICategoriesService categoriesService)
         {
             this.assignmentsService = assignmentsService;
-            this.dbContext = dbContext;
-            this.userManager = userManager;
+            this.categoriesService = categoriesService;
+        }
+
+        [HttpGet]
+        public IActionResult GetAllInCompleted()
+        {
+            var incompletedAssignments = this.assignmentsService.GetAssignments(a => a.IsCompleted == false);
+
+            return this.Ok(incompletedAssignments);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AssignmentInputDto assignment)
         {
-            if (!this.dbContext.Categories.Any(c => c.Id != assignment.CategoryId))
+            if (!this.categoriesService.GetById(assignment.CategoryId))
             {
                 this.ModelState.AddModelError(nameof(assignment.CategoryId), "This category does not exist.");
             }
@@ -47,6 +51,32 @@
             }
 
             return this.BadRequest();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Complete(string id)
+        {
+            var result = await this.assignmentsService.CompleteAssignmentAsync(id);
+
+            if (!result)
+            {
+                return this.BadRequest();
+            }
+
+            return this.Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var result = await this.assignmentsService.DeleteAssignmentAsync(id);
+
+            if (!result)
+            {
+                return this.BadRequest();
+            }
+
+            return this.Ok();
         }
     }
 }
