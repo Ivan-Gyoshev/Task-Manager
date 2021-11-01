@@ -1,16 +1,16 @@
 ﻿namespace DoYourThings.Data
 {
+    using System.IO;
+
     using DoYourThings.Data.Models;
     using IdentityServer4.EntityFramework.Options;
     using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
-    using System.IO;
 
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
-
         public ApplicationDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions)
@@ -37,6 +37,5 @@
                     .UseSqlServer(connectionString);
             }
         }
-
     }
 }

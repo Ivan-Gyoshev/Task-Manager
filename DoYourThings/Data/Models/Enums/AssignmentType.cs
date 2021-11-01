@@ -1,6 +1,6 @@
 ﻿namespace DoYourThings.Data.Models.Enums
 {
-    public enum Type
+    public enum AssignmentType
     {
         Reading = 1,
         Writing = 2,

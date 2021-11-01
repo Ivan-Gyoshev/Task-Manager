@@ -3,6 +3,8 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
+    using DoYourThings.Data.Models.Enums;
+
     using static DoYourThings.Data.Common.DataConstants;
 
     public class Assignment
@@ -17,6 +19,8 @@
         public DateTime Date { get; set; }
 
         public bool IsCompleted { get; set; } = false;
+
+        public AssignmentType Type { get; set; }
 
         [Required]
         public string UserId { get; set; }
