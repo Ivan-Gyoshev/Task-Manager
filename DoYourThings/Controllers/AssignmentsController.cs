@@ -24,7 +24,7 @@
         [HttpGet]
         public IActionResult GetAllInCompleted()
         {
-            var incompletedAssignments = this.assignmentsService.GetAssignments(a => a.IsCompleted == false);
+            var incompletedAssignments = this.assignmentsService.GetAllDailyAssignments();
 
             return this.Ok(incompletedAssignments);
         }

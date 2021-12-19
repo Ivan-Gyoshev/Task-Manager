@@ -12,6 +12,8 @@
 
     public class AssignmentsService : IAssignmentsService
     {
+        const string dailyId = "3ef199f1-7b07-4815-926a-e89d3b75e82a";
+
         private readonly ApplicationDbContext dbContext;
 
         public AssignmentsService(ApplicationDbContext dbContext)
@@ -67,9 +69,9 @@
             return true;
         }
 
-        public IEnumerable<AssignmentsDisplayDTO> GetAssignments(Func<Assignment, bool> func)
+        public IEnumerable<AssignmentsDisplayDTO> GetAllDailyAssignments()
             => this.dbContext.Assignments
-                .Where(func)
+                .Where(a => a.CategoryId == dailyId && a.IsCompleted == false)
                 .Select(a => new AssignmentsDisplayDTO
                 {
                     Title = a.Title,

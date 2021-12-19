@@ -1,0 +1,124 @@
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+
+body {
+  margin: 0 auto;
+}
+
+.home {
+  display: flex;
+}
+
+.home-nav {
+  background: rgb(5, 118, 129);
+  background: linear-gradient(
+    90deg,
+    rgba(5, 118, 129, 1) 0%,
+    rgba(37, 218, 236, 1) 100%
+  );
+  margin: 0px;
+  padding: 300px 100px;
+  text-align: center;
+  align-items: center;
+}
+
+.home-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.home-nav-list li {
+  background-color: #ffffff;
+  padding: 10px 30px;
+  border-radius: 20px;
+  margin: 20px 0;
+  text-align: center;
+  box-shadow: 7px 4px 20px 5px #282020;
+}
+
+.home-nav-list a {
+  text-decoration: none;
+  color: #24d6e8;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.home-nav h1 {
+  font-weight: bold;
+  color: white;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.home-nav i {
+  font-size: 30px;
+  margin: 20px 0;
+  color: white;
+}
+
+.home-nav-heading h1 {
+  width: 100px;
+  text-align: center;
+  margin: 0;
+}
+
+.assignment-info {
+  background-color: white;
+  width: 550px;
+  height: 470px;
+  margin: 320px 280px;
+  padding: 60px 90px;
+  border: 5px solid #22d2e4;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 60px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 2px 2px 13px -4px black;
+}
+
+.assignment-info h2 {
+  background-color: #ffffff;
+  padding: 10px 10px;
+  margin-top: 0;
+  text-align: center;
+  font-family: monospace;
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  border-bottom: 3px solid black;
+}
+
+.assign-row {
+  display: flex;
+  margin-top: 20px;
+}
+
+.assignment-info p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 20px;
+  width: 40%;
+}
+
+.assignment-info a {
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.assignment-info span {
+  margin: 0 30px;
+  font-size: 20px;
+}
+
+.fa-times {
+  color: red;
+  font-size: 20px;
+}
+
+.fa-check {
+  color: green;
+  font-size: 20px;
+}

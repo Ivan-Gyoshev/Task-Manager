@@ -1,13 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+
+import './Home.css'
 
 export class Home extends Component {
   static displayName = Home.name;
 
-  render () {
+  render() {
     return (
-      <div>
-            <h1>Hello from the Task Manager!</h1>
-      </div>
+      <section className="home">
+        <nav className="home-nav">
+          <article className="home-nav-heading"></article>
+          <h1>Select</h1>
+          <i className="far fa-arrow-alt-circle-down"></i>
+          <ul className="home-nav-list">
+            <li>
+              <a href="">Daily</a>
+            </li>
+            <li>
+              <a href="">Weekly</a>
+            </li>
+            <li>
+              <a href="">Monthly</a>
+            </li>
+          </ul>
+        </nav>
+       
+      </section>
     );
   }
 }

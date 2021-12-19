@@ -12,7 +12,7 @@
     {
         Task<string> CreateAssignmentAsync(string id, string title, DateTime date, AssignmentType type, string categoryId, string userId);
 
-        IEnumerable<AssignmentsDisplayDTO> GetAssignments(Func<Assignment, bool> func);
+        IEnumerable<AssignmentsDisplayDTO> GetAllDailyAssignments();
 
         Task<bool> CompleteAssignmentAsync(string id);
 
