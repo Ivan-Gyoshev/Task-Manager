@@ -1,13 +1,13 @@
-import React from "react";
+import * as React from "react";
 import { useState, useEffect } from "react";
 import * as assignmentService from "../../services/assignmentsService";
-import AssignemntCard from "../Assignments/AssignmentCard";
+import AssignmentCard from "../Assignments/AssignmentCard";
 
 export const Dashboard = () => {
   const [assignments, setAssignments] = useState([]);
 
-  useEffect(() => {
-    assignmentService.getAll
+  useEffect((e) => {
+    assignmentService.getAll()
       .then((result) => {
         setAssignments(result);
       })
@@ -19,8 +19,8 @@ export const Dashboard = () => {
   return (
     <article className="daily">
       <article className="assignment-info">
-        <h2>Assignemnts: </h2>
-        <AssignemntCard assignemnts={assignments} />
+        <h2>Assignments: </h2>
+        <AssignmentCard assignments={assignments} />
       </article>
     </article>
   );

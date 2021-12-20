@@ -1,10 +1,11 @@
-import { React } from "react";
+import * as React from "react";
 
-const AssignmentRow = ({ assignemnt }) => {
+const AssignmentRow = ({ assignment }) => {
+
   return (
     <>
-      <p>{assignemnt.title}</p>
-      <span>{assignemnt.date}</span>
+      <p>{assignment.title}</p>
+      <span>{assignment.date}</span>
       <a href="">
         <i className="fas fa-times"></i>
       </a>

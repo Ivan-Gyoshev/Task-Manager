@@ -14,7 +14,7 @@ export class Home extends Component {
           <i className="far fa-arrow-alt-circle-down"></i>
           <ul className="home-nav-list">
             <li>
-              <a href="">Daily</a>
+              <a href="/dashboard">Daily</a>
             </li>
             <li>
               <a href="">Weekly</a>
