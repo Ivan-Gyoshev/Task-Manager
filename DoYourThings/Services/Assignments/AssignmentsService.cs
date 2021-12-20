@@ -12,14 +12,12 @@
 
     public class AssignmentsService : IAssignmentsService
     {
-        const string dailyId = "3ef199f1-7b07-4815-926a-e89d3b75e82a";
-
         private readonly ApplicationDbContext dbContext;
 
         public AssignmentsService(ApplicationDbContext dbContext)
             => this.dbContext = dbContext;
 
-        public async Task<bool> CompleteAssignmentAsync(string id)
+        public async Task<bool> CompleteAssignmentAsync(int id)
         {
             var assignment = this.dbContext.Assignments.FirstOrDefault(a => a.Id == id);
 
@@ -34,13 +32,12 @@
             return true;
         }
 
-        public async Task<string> CreateAssignmentAsync(string id, string title, DateTime date, AssignmentType type, string categoryId, string userId)
+        public async Task<int> CreateAssignmentAsync(string title, DateTime date, AssignmentType type, string categoryId, string userId)
         {
             Enum.TryParse(typeof(AssignmentType), type.ToString(), out object typeResult);
 
             var assignment = new Assignment
             {
-                Id = id,
                 Title = title,
                 Date = date,
                 Type = (AssignmentType)typeResult,
@@ -54,7 +51,7 @@
             return assignment.Id;
         }
 
-        public async Task<bool> DeleteAssignmentAsync(string id)
+        public async Task<bool> DeleteAssignmentAsync(int id)
         {
             var assignment = this.dbContext.Assignments.FirstOrDefault(a => a.Id == id);
 
@@ -71,11 +68,11 @@
 
         public IEnumerable<AssignmentsDisplayDTO> GetAllDailyAssignments()
             => this.dbContext.Assignments
-                .Where(a => a.CategoryId == dailyId && a.IsCompleted == false)
+                .Where(a => a.IsCompleted == false)
                 .Select(a => new AssignmentsDisplayDTO
                 {
                     Title = a.Title,
-                    Date = a.Date,
+                    Date = a.Date.ToString("dd/MM/yyyy HH:mm"),
                     Type = a.Type,
                 })
                 .ToList();

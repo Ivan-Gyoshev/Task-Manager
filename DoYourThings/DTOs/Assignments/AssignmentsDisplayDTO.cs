@@ -8,7 +8,7 @@
     {
         public string Title { get; set; }
 
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         public AssignmentType Type { get; set; }
     }

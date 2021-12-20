@@ -38,7 +38,6 @@
             }
 
             var result = await this.assignmentsService.CreateAssignmentAsync(
-                assignment.Id,
                 assignment.Title,
                 assignment.Date,
                 assignment.Type,
@@ -54,7 +53,7 @@
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Complete(string id)
+        public async Task<IActionResult> Complete(int id)
         {
             var result = await this.assignmentsService.CompleteAssignmentAsync(id);
 
@@ -67,7 +66,7 @@
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
             var result = await this.assignmentsService.DeleteAssignmentAsync(id);
 

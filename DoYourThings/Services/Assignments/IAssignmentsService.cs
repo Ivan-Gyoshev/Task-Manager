@@ -10,12 +10,12 @@
 
     public interface IAssignmentsService
     {
-        Task<string> CreateAssignmentAsync(string id, string title, DateTime date, AssignmentType type, string categoryId, string userId);
+        Task<int> CreateAssignmentAsync(string title, DateTime date, AssignmentType type, string categoryId, string userId);
 
         IEnumerable<AssignmentsDisplayDTO> GetAllDailyAssignments();
 
-        Task<bool> CompleteAssignmentAsync(string id);
+        Task<bool> CompleteAssignmentAsync(int id);
 
-        Task<bool> DeleteAssignmentAsync(string id);
+        Task<bool> DeleteAssignmentAsync(int id);
     }
 }
