@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
-import './Home.css'
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -14,17 +14,25 @@ export class Home extends Component {
           <i className="far fa-arrow-alt-circle-down"></i>
           <ul className="home-nav-list">
             <li>
-              <a href="/dashboard">Daily</a>
+              <Link to="/dashboard/today">Today</Link>
             </li>
             <li>
-              <a href="">Weekly</a>
-            </li>
-            <li>
-              <a href="">Monthly</a>
+              <Link to="/dashboard/7days">In 7 days</Link>
             </li>
           </ul>
         </nav>
-       
+        <div className="logged-intro">
+          <article className="intro-heading">
+            <h1>Wellcome fellow user!</h1>
+          </article>
+          <p>Struggling with your organization?</p>
+          <p>
+            Let us help you be more productive by organizing your assignments!
+          </p>
+          <p>
+            Click on the menu on your right and increase your productivity
+          </p>
+        </div>
       </section>
     );
   }

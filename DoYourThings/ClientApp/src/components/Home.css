@@ -65,11 +65,32 @@ body {
   margin: 0;
 }
 
+.add-assign {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 20px;
+  border: 2px solid blue;
+  box-shadow: 2px 2px 13px -4px black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  max-width: 50%;
+  margin-top: 5%;
+}
+
+.daily {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .assignment-info {
   background-color: white;
   width: 550px;
   height: 470px;
-  margin: 320px 280px;
+  margin: 60px 280px 100px 280px;
   padding: 60px 90px;
   border: 5px solid #22d2e4;
   border-top-left-radius: 60px;
@@ -108,8 +129,8 @@ body {
   font-size: 20px;
 }
 
-.assignment-info span {
-  margin: 0 30px;
+.assign-row span {
+  margin: 0 20px;
   font-size: 20px;
 }
 
@@ -121,4 +142,27 @@ body {
 .fa-check {
   color: green;
   font-size: 20px;
+}
+
+.logged-intro {
+  margin: 15% 16%;
+  background: url("./backgrounds/note.jpg");
+  border: 5px solid #22d2e4;
+  box-shadow: 2px 2px 13px -4px black;
+  text-align: center;
+}
+
+.intro-heading h1 {
+  font-weight: bold;
+  color: gray;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 2px solid black;
+  padding: 10px;
+}
+
+.logged-intro p {
+  font-weight: bolder;
+  margin: 50px 0;
+  font-size: 20px;
+  font-family:Arial, Helvetica, sans-serif;
 }

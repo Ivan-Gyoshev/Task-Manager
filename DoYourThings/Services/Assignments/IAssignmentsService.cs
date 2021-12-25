@@ -14,6 +14,8 @@
 
         IEnumerable<AssignmentsDisplayDTO> GetAllDailyAssignments();
 
+        IEnumerable<AssignmentsDisplayDTO> GetAllAssignmentsInSevenDays();
+
         Task<bool> CompleteAssignmentAsync(int id);
 
         Task<bool> DeleteAssignmentAsync(int id);

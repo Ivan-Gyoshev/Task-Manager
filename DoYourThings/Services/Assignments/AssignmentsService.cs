@@ -66,13 +66,24 @@
             return true;
         }
 
-        public IEnumerable<AssignmentsDisplayDTO> GetAllDailyAssignments()
-            => this.dbContext.Assignments
-                .Where(a => a.IsCompleted == false)
+        public IEnumerable<AssignmentsDisplayDTO> GetAllAssignmentsInSevenDays()
+         => this.dbContext.Assignments
+                .Where(a => a.IsCompleted)
                 .Select(a => new AssignmentsDisplayDTO
                 {
                     Title = a.Title,
-                    Date = a.Date.ToString("dd/MM/yyyy HH:mm"),
+                    Date = a.Date.ToString("dd-MM-yyyy"),
+                    Type = a.Type,
+                })
+                .ToList();
+
+        public IEnumerable<AssignmentsDisplayDTO> GetAllDailyAssignments()
+            => this.dbContext.Assignments
+                .Where(a => a.IsCompleted == false && a.Date.Date.Equals(DateTime.Now.Date))
+                .Select(a => new AssignmentsDisplayDTO
+                {
+                    Title = a.Title,
+                    Date = a.Date.ToString("dd-MM-yyyy"),
                     Type = a.Type,
                 })
                 .ToList();
