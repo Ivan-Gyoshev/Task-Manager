@@ -146,7 +146,7 @@ body {
 
 .logged-intro {
   margin: 15% 16%;
-  background: url("./backgrounds/note.jpg");
+  background: url("../Backgrounds/note.jpg");
   border: 5px solid #22d2e4;
   box-shadow: 2px 2px 13px -4px black;
   text-align: center;

@@ -2,7 +2,6 @@
 {
     using System.Threading.Tasks;
 
-    using DoYourThings.Data;
     using DoYourThings.DTOs.Assignments;
     using DoYourThings.Services.Assignments;
     using DoYourThings.Services.Categories;
@@ -19,6 +18,13 @@
         {
             this.assignmentsService = assignmentsService;
             this.categoriesService = categoriesService;
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var result = this.assignmentsService.GetAssignment(id);
+            return this.Ok(result);
         }
 
         [HttpGet]
@@ -40,7 +46,6 @@
             var result = await this.assignmentsService.CreateAssignmentAsync(
                 assignment.Title,
                 assignment.Date,
-                assignment.Type,
                 assignment.CategoryId,
                 assignment.UserId);
 

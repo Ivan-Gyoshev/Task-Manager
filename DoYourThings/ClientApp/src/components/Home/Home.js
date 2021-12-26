@@ -14,10 +14,10 @@ export class Home extends Component {
           <i className="far fa-arrow-alt-circle-down"></i>
           <ul className="home-nav-list">
             <li>
-              <Link to="/dashboard/today">Today</Link>
+              <Link to="/today">Today</Link>
             </li>
             <li>
-              <Link to="/dashboard/7days">In 7 days</Link>
+              <Link to="/All">In 7 days</Link>
             </li>
           </ul>
         </nav>

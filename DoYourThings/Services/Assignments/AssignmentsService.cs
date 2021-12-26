@@ -32,15 +32,12 @@
             return true;
         }
 
-        public async Task<int> CreateAssignmentAsync(string title, DateTime date, AssignmentType type, string categoryId, string userId)
+        public async Task<int> CreateAssignmentAsync(string title, DateTime date, string categoryId, string userId)
         {
-            Enum.TryParse(typeof(AssignmentType), type.ToString(), out object typeResult);
-
             var assignment = new Assignment
             {
                 Title = title,
                 Date = date,
-                Type = (AssignmentType)typeResult,
                 CategoryId = categoryId,
                 UserId = userId,
             };
@@ -66,26 +63,30 @@
             return true;
         }
 
-        public IEnumerable<AssignmentsDisplayDTO> GetAllAssignmentsInSevenDays()
-         => this.dbContext.Assignments
-                .Where(a => a.IsCompleted)
-                .Select(a => new AssignmentsDisplayDTO
-                {
-                    Title = a.Title,
-                    Date = a.Date.ToString("dd-MM-yyyy"),
-                    Type = a.Type,
-                })
-                .ToList();
-
         public IEnumerable<AssignmentsDisplayDTO> GetAllDailyAssignments()
             => this.dbContext.Assignments
                 .Where(a => a.IsCompleted == false && a.Date.Date.Equals(DateTime.Now.Date))
                 .Select(a => new AssignmentsDisplayDTO
                 {
+                    Id = a.Id,
                     Title = a.Title,
                     Date = a.Date.ToString("dd-MM-yyyy"),
                     Type = a.Type,
+                    UserId = a.UserId,
                 })
                 .ToList();
+
+        public AssignmentsDisplayDTO GetAssignment(int id)
+        => this.dbContext.Assignments
+            .Where(a => a.Id == id)
+            .Select(a => new AssignmentsDisplayDTO
+            {
+                Id = a.Id,
+                Title = a.Title,
+                Date = a.Date.ToString("dd-MM-yyyy"),
+                Type = a.Type,
+                UserId = a.UserId,
+            })
+            .FirstOrDefault();
     }
 }

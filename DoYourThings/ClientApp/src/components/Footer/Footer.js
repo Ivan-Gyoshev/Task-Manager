@@ -7,7 +7,7 @@ export const Footer = () => {
       className="navbar-expand-sm nav-assig navbar-toggleable-sm ng-white border-top box-shadowr"
       light
     >
-      <p style={{"margin-left": "30%"}}>
+      <p style={{"marginLeft": "30%"}}>
         This is ToDo application, made for my ReactJS project deffense. &copy;
         2021
       </p>
